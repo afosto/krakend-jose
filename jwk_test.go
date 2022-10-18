@@ -11,6 +11,7 @@ import (
 	"os"
 	"sync/atomic"
 	"testing"
+	"time"
 
 	"github.com/krakendio/krakend-jose/v2/secrets"
 )
@@ -240,6 +241,9 @@ func TestJWK_cache(t *testing.T) {
 		if err != nil {
 			t.Error(err)
 		}
+
+		// give some time to the concurrent cache warm up to complete
+		<-time.After(100 * time.Millisecond)
 
 		if hits != 1 {
 			t.Errorf("wrong initial number of hits to the jwk endpoint: %d", hits)
