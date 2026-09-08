@@ -13,7 +13,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/afosto/krakend-jose/v2/secrets"
+	"github.com/krakendio/krakend-jose/v2/secrets"
 )
 
 func TestJWK(t *testing.T) {
